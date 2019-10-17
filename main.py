@@ -1,16 +1,29 @@
 import sys
 
 
-clientes = ['pablo', 'ricardo']
+clientes = [
+    {
+        'nombre': 'pablo',
+        'empresa': 'google',
+        'correo': 'pablo@google.com',
+        'rol': 'ingeniero en software'
+    },
+    {
+        'nombre': 'ricardo',
+        'empresa': 'facebook',
+        'correo': 'ricardo@facegook.com',
+        'rol': 'ingeniero electronico'
+    }
+]
 
 
-def crear_clientes(nombre):
+def crear_clientes(nuevo_cliente):
     global clientes
-    if nombre not in clientes:
-        clientes.append(nombre)
-        print('{} fue creado exitosamente'.format(nombre))
+    if cliente not in clientes:
+        clientes.append(nuevo_cliente)
+        print('{} fue creado exitosamente'.format(nuevo_cliente.nombre))
     else:
-        print('{} ya esta en la lista de clientes'.format(nombre))
+        print('{} ya esta en la lista de clientes'.format(nuevo_cliente.nombre))
 
 
 def listar_clientes():
