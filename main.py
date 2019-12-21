@@ -1,35 +1,26 @@
 import sys
 
 
-clientes = [
-    {
-        'nombre': 'pablo',
-        'empresa': 'google',
-        'correo': 'pablo@google.com',
-        'rol': 'ingeniero en software'
-    },
-    {
-        'nombre': 'ricardo',
-        'empresa': 'facebook',
-        'correo': 'ricardo@facegook.com',
-        'rol': 'ingeniero electronico'
-    }
-]
+clientes = 'pablo,ricardo,'
 
 
-def crear_clientes(nuevo_cliente):
+def crear_clientes(nombre):
     global clientes
-    if cliente not in clientes:
-        clientes.append(nuevo_cliente)
-        print('{} fue creado exitosamente'.format(nuevo_cliente.nombre))
+    if nombre not in clientes:
+        clientes += nombre
+        _agregar_coma()
     else:
-        print('{} ya esta en la lista de clientes'.format(nuevo_cliente.nombre))
+        print('El cliente ya esta en la lista de clientes')
 
 
 def listar_clientes():
     global clientes
-    for indice, cliente in enumerate(clientes):
-        print('{}: {}'.format(indice, cliente))
+    print(clientes)
+
+
+def _agregar_coma():
+    global clientes
+    clientes += ','
 
 
 def _bienvenido():
@@ -40,22 +31,20 @@ def _bienvenido():
     print('[A]ctualizar cliente')
     print('[B]orrar cliente')
     print('[E]ncontrar cliente')
-    print('[L]istar clientes')
 
 
 def borrar_cliente(nombre):
     global clientes
     if nombre in clientes:
-        clientes.remove(nombre)
-        print('{} fue borrado con exito'.format(nombre))
+        clientes = clientes.remplace(nombre + ',', '')
     else:
-        print('No existe {} en nuestra lista'.format(nombre))
+        print('No existe ese cliente en nuestra lista')
 
 
 def obtener_cliente():
     nombre = None
     while not nombre:
-        nombre = input('Ingrese el nombre: ')
+        nombre = input('Cual es el nombre del cliente que quiere modificar? ')
         if nombre == 'salir':
             nombre = None
             break
@@ -67,14 +56,13 @@ def obtener_cliente():
 def actualizar_cliente(nombre, nombre_nuevo):
     global clientes
     if nombre in clientes:
-        indice = clientes.index(nombre)
-        clientes[indice] = nombre_nuevo
+        clientes = clientes.replace(nombre + ',', nombre_nuevo + ',')
     else:
         print('El cliente no esta en la lista de clientes')
 
 
 def encontrar_cliente(nombre):
-    for cliente in clientes:
+    for cliente in clientes.split(','):
         if cliente != nombre:
             continue
         else:
@@ -98,10 +86,8 @@ if __name__ == '__main__':
     elif comando == 'E':
         cliente = encontrar_cliente(obtener_cliente())
         if cliente:
-            print('El cliente esta en la lista')
+            print('El cliente está en la lista')
         else:
             print('El cliente no esta en nuestra lista')
-    elif comando == 'L':
-        listar_clientes()
     else:
         print('Comando invalido')
