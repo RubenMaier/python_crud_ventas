@@ -1,0 +1,6 @@
+/__pycache__/*
+/clientes/__pycache__/*
+/ventas.egg-info/*
+/venv/*
+/.vscode/*
+.clientes.csv
