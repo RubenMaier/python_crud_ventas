@@ -23,3 +23,7 @@ Y finalmente instalamos el programa (estando dentro del directorio clonado):
 ```sh
 $ pip install --editable .
 ```
+Una vez instalado ya puede ejecutar los comandos con:
+```sh
+$ ventas --help
+```
